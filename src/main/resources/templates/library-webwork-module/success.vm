@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>$i18n.getText("jira-library.title.name")</title>
+    <meta name="decorator" content="atl.admin">
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>$i18n.getText("jira-library.headline.name")</h1>
+    </div>
+
+    <br>
+    <div id="kdp-planning-page-container" style="max-width:20%;min-width: 350px"></div>
+
+</body>
+</html>

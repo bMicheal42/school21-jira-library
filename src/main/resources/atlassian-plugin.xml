@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="jira-library2"/>  
+  <!-- Web Resources -->
+    <!-- 1 -->
+  <web-resource key="jira-library2-resources" name="jira-library2 Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="jira-library2.css" location="/css/jira-library2.css"/>  
+    <resource type="download" name="jira-library2.js" location="/js/jira-library2.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>jira-library2</context> 
+  </web-resource>
+    <!-- 2 -->
+  <web-resource key="jira-library2-resources--main-page" name="jira-library2 Web Resources for Main page">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <dependency>com.atlassian.auiplugin:aui-select2</dependency>
+    <dependency>com.atlassian.auiplugin:aui-experimental-soy-templates</dependency>
+    <transformation extension="soy">
+      <transformer key="soyTransformer">
+        <functions>com.atlassian.confluence.plugins.soy:soy-core-functions</functions>
+      </transformer>
+    </transformation>
+    <resource type="download" name="main-page-controller.js" location="/js/main-page-controller.js"/>
+    <resource type="download" name="jira-library-soy.js" location="/templates-soy/jira-library.soy"/>
+    <context>jira-library2</context>
+  </web-resource>s
+  <!-- Web Work -->
+  <webwork1 key="library-webwork-module" name="Library Webwork Module" i18n-name-key="library-webwork-module.name" roles-required="admin"> 
+    <description key="library-webwork-module.description">The Library Webwork Module Plugin</description>  
+    <actions> 
+      <action name="com.bmicheal.jira.library.webwork.LibraryWebworkModuleAction" alias="LibraryWebworkModuleAction"> 
+        <view name="success">/templates/library-webwork-module/success.vm</view>  
+        <view name="input">/templates/library-webwork-module/input.vm</view>  
+        <view name="error">/templates/library-webwork-module/error.vm</view> 
+      </action> 
+    </actions> 
+  </webwork1>  
+  <web-section key="admin_jira_library_section" name="admin_jira_library_section" location="admin_plugins_menu" weight="20" i18n-name-key="admin_jira_library_section.name"> 
+    <label key="admin_jira_library_section.name"/> 
+  </web-section>  
+  <web-item key="admin_jira_library_webitem" name="admin_jira_library_webitem" section="admin_plugins_menu/admin_jira_library_section" weight="15" i18n-name-key="admin_jira_library_webitem.name"> 
+    <label key="admin_jira_library_webitem.name"/>  
+    <link linkId="admin_jira_library_webitem_link">/secure/LibraryWebworkModuleAction.jspa</link> 
+  </web-item>  
+  <rest name="User Search Resource" i18n-name-key="user-search-resource.name" key="user-search-resource" path="/usersearchresource" version="1.0"> 
+    <description key="user-search-resource.description">The User Search Resource Plugin</description> 
+  </rest>
+</atlassian-plugin>
