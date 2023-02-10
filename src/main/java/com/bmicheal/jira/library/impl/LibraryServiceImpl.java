@@ -103,7 +103,7 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     public void ft_slackNotify(String email, String text) {
-        slackUtil.sendMessage(email, text);
+    //    slackUtil.sendMessage(email, text);
     }
 
 
