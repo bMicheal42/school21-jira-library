@@ -103,6 +103,8 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     public void ft_slackNotify(String email, String text) {
+        log.warn("NO SLACK IN RUSSIA HA_HA_HA");
+        log.warn("action skipped");
     //    slackUtil.sendMessage(email, text);
     }
 
